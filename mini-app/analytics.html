@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Аналитика - Realty CRM</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="app">
+        <header class="app-header">
+            <div class="header-left">
+                <button class="icon-btn" onclick="history.back()">←</button>
+                <div class="brand"><h1>Аналитика</h1></div>
+            </div>
+        </header>
+
+        <section class="analytics-section">
+            <div class="chart-card">
+                <h3>📈 Динамика лидов</h3>
+                <canvas id="timelineChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>📂 По категориям</h3>
+                <canvas id="categoryChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>🏘 По группам</h3>
+                <canvas id="groupChart"></canvas>
+            </div>
+            <div class="stats-table">
+                <h3>📊 Детальная статистика</h3>
+                <table id="statsTable">
+                    <tr><th>Метрика</th><th>Значение</th></tr>
+                </table>
+            </div>
+        </section>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">Главная</span></a>
+            <a href="leads.html" class="nav-item"><span class="nav-icon">📋</span><span class="nav-label">Лиды</span></a>
+            <a href="analytics.html" class="nav-item active"><span class="nav-icon">📊</span><span class="nav-label">Аналитика</span></a>
+            <a href="settings.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Настройки</span></a>
+        </nav>
+    </div>
+
+    <script src="js/telegram.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/analytics.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Настройки - Realty CRM</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="app">
+        <header class="app-header">
+            <div class="header-left">
+                <button class="icon-btn" onclick="history.back()">←</button>
+                <div class="brand"><h1>Настройки</h1></div>
+            </div>
+        </header>
+
+        <section class="settings-section">
+            <div class="settings-group">
+                <h3>🔔 Уведомления</h3>
+                <label class="switch-label">
+                    <span>Новые лиды</span>
+                    <input type="checkbox" id="notifyNew" checked onchange="saveSettings()">
+                    <span class="switch"></span>
+                </label>
+                <label class="switch-label">
+                    <span>Ежедневный дайджест</span>
+                    <input type="checkbox" id="notifyDigest" checked onchange="saveSettings()">
+                    <span class="switch"></span>
+                </label>
+            </div>
+
+            <div class="settings-group">
+                <h3>🤖 AI Фильтр</h3>
+                <label class="range-label">
+                    <span>Минимальный AI Score: <b id="thresholdValue">70%</b></span>
+                    <input type="range" id="aiThreshold" min="0" max="100" value="70" oninput="updateThreshold(this.value)" onchange="saveSettings()">
+                </label>
+            </div>
+
+            <div class="settings-group">
+                <h3>🔗 CRM Интеграция</h3>
+                <label class="input-label">
+                    <span>Webhook URL</span>
+                    <input type="url" id="crmWebhook" placeholder="https://your-crm.com/webhook" onchange="saveSettings()">
+                </label>
+                <label class="switch-label">
+                    <span>Авто-экспорт</span>
+                    <input type="checkbox" id="autoExport" onchange="saveSettings()">
+                    <span class="switch"></span>
+                </label>
+            </div>
+
+            <div class="settings-group">
+                <h3>🔑 Ключевые слова</h3>
+                <div class="tags-input" id="keywordsTags">
+                    <span class="tag">купить квартиру<span class="tag-remove">✕</span></span>
+                    <span class="tag">продать<span class="tag-remove">✕</span></span>
+                    <span class="tag">снять<span class="tag-remove">✕</span></span>
+                    <input type="text" id="newKeyword" placeholder="+ Добавить" onkeydown="addKeyword(event)">
+                </div>
+            </div>
+
+            <div class="settings-group danger">
+                <h3>⚠️ Опасная зона</h3>
+                <button class="btn btn-danger" onclick="clearCache()">🗑 Очистить кэш</button>
+                <button class="btn btn-danger" onclick="logout()">🚪 Выйти</button>
+            </div>
+        </section>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">Главная</span></a>
+            <a href="leads.html" class="nav-item"><span class="nav-icon">📋</span><span class="nav-label">Лиды</span></a>
+            <a href="analytics.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Аналитика</span></a>
+            <a href="settings.html" class="nav-item active"><span class="nav-icon">⚙️</span><span class="nav-label">Настройки</span></a>
+        </nav>
+    </div>
+
+    <script src="js/telegram.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+</html>

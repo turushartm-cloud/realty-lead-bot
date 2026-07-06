@@ -1,0 +1,12 @@
+{
+  "name": "Realty Lead CRM",
+  "short_name": "RealtyCRM",
+  "start_url": "/mini-app/index.html",
+  "display": "standalone",
+  "background_color": "#FAFBFC",
+  "theme_color": "#FF6B35",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192" },
+    { "src": "icon-512.png", "sizes": "512x512" }
+  ]
+}

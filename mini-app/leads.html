@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Лиды - Realty CRM</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="app">
+        <header class="app-header">
+            <div class="header-left">
+                <button class="icon-btn" onclick="history.back()">←</button>
+                <div class="brand"><h1>Все лиды</h1></div>
+            </div>
+            <div class="header-right">
+                <button class="icon-btn" id="filterBtn">🔍</button>
+            </div>
+        </header>
+
+        <div class="filter-bar" id="filterBar">
+            <select id="statusFilter" onchange="applyFilters()">
+                <option value="">Все статусы</option>
+                <option value="new">🆕 Новые</option>
+                <option value="contacted">📞 Связались</option>
+                <option value="qualified">✅ Квалифицированы</option>
+                <option value="converted">💰 Конвертированы</option>
+                <option value="rejected">❌ Отклонены</option>
+            </select>
+            <select id="scoreFilter" onchange="applyFilters()">
+                <option value="">Все AI Score</option>
+                <option value="0.8">🔥 >80%</option>
+                <option value="0.6">⭐ >60%</option>
+                <option value="0.4">📊 >40%</option>
+            </select>
+            <select id="sortFilter" onchange="applyFilters()">
+                <option value="created_at:desc">📅 Сначала новые</option>
+                <option value="ai_score:desc">🤖 По AI Score</option>
+                <option value="priority:desc">⚡ По приоритету</option>
+            </select>
+        </div>
+
+        <section class="leads-full" id="leadsFull">
+            <div class="loading">Загрузка...</div>
+        </section>
+
+        <div class="pagination" id="pagination"></div>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">Главная</span></a>
+            <a href="leads.html" class="nav-item active"><span class="nav-icon">📋</span><span class="nav-label">Лиды</span></a>
+            <a href="analytics.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Аналитика</span></a>
+            <a href="settings.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-label">Настройки</span></a>
+        </nav>
+    </div>
+
+    <div class="modal" id="leadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Детали лида</h3>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="takeLead()">✅ Взять в работу</button>
+                <button class="btn btn-secondary" onclick="changeStatus()">🔄 Статус</button>
+                <button class="btn btn-success" onclick="syncToCRM()">📤 В CRM</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/telegram.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/leads.js"></script>
+</body>
+</html>
